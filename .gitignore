@@ -211,3 +211,6 @@ application-oauth.yml
 TestDatainit.java
 src/main/generated/
 daitgym-firebase-sdk.json
+/src/main/resources/application-cloud.yml
+/src/main/resources/application-db.yml
+/src/main/resources/application-local_db.yml
