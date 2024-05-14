@@ -1,5 +1,13 @@
 spring:
   profiles:
-    include:
-      - dev
-      - oauth
+    active: local
+    group:
+      local:
+        - local_db
+        - cloud
+        - oauth
+      dev:
+        - db
+        - cloud
+        - oauth
+      prod:
