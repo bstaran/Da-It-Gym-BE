@@ -55,8 +55,7 @@ public class RoutineService {
     @Transactional(readOnly = true)
     public RoutineListResponseDto getRoutines(Pageable pageable, Integer division, String email) {
 
-        Slice<Routine> routines = routineRepository.findAllByDivision(division, pageable)
-                .orElseThrow(NotFoundRoutine::new);
+        Slice<Routine> routines = routineRepository.findAllByDivision(division, pageable);
 
         return getRoutineListResponseDto(routines, email);
     }
@@ -113,8 +112,7 @@ public class RoutineService {
 
     @Transactional(readOnly = true)
     public RoutineListResponseDto getUserRoutines(String nickname, Integer division, Pageable pageable) {
-        Slice<Routine> routines = routineRepository.findByDivisionAndUserNickname(division, nickname, pageable)
-                .orElseThrow(NotFoundRoutine::new);
+        Slice<Routine> routines = routineRepository.findByDivisionAndUserNickname(division, nickname, pageable);
 
         return getRoutineListResponseDto(routines, nickname);
     }
@@ -128,8 +126,7 @@ public class RoutineService {
                 .map(follow -> follow.getTarget().getEmail())
                 .toList();
 
-        Slice<Routine> routines = routineRepository.findByDivisionAndUserEmailIn(division, followingEmails, pageable)
-                .orElseThrow(NotFoundRoutine::new);
+        Slice<Routine> routines = routineRepository.findByDivisionAndUserEmailIn(division, followingEmails, pageable);
 
         return getRoutineListResponseDto(routines, myEmail);
     }
